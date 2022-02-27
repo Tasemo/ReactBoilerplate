@@ -5,5 +5,10 @@
     "language": "Sprache",
     "english": "Englisch",
     "german": "Deutsch",
-    "darkMode": "Dunkles Design"
+    "darkMode": "Dunkles Design",
+    "login": "Einloggen",
+    "logout": "Ausloggen",
+    "password": "Passwort",
+    "email": "E-Mail",
+    "404": "Die angefragte Seite existiert nicht!"
 }

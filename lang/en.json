@@ -5,5 +5,10 @@
     "language": "Language",
     "english": "English",
     "german": "German",
-    "darkMode": "Dark Design"
+    "darkMode": "Dark Design",
+    "login": "Login",
+    "logout": "Logout",
+    "password": "Password",
+    "email": "E-Mail",
+    "404": "The requested site does not exist!"
 }
