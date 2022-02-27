@@ -7,7 +7,7 @@ import { Context as ThemeContext } from "../Context/ThemeContext";
 export default function Settings() {
     const intlContext = React.useContext(IntlContext);
     const themeContext = React.useContext(ThemeContext);
-    const [language, setLanguage] = React.useState("en")
+    const [language, setLanguage] = React.useState(intlContext.getLocale());
 
     const onLanguageChange = (event: SelectChangeEvent) => {
         intlContext.switchLocale(event.target.value);
@@ -29,7 +29,7 @@ export default function Settings() {
                     </MenuItem>
                 </Select>
             </FormControl>
-            <FormControlLabel control={<Switch onChange={themeContext.switchDarkMode} />} label={<FormattedMessage id="darkMode" />} />
+            <FormControlLabel control={<Switch checked={themeContext.isInDarkMode()} onChange={themeContext.switchDarkMode} />} label={<FormattedMessage id="darkMode" />} />
         </Box>
     );
 }
