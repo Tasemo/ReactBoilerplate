@@ -1,16 +1,16 @@
-import { FormControl, InputLabel, Select, MenuItem, Box, SelectChangeEvent, Switch, FormControlLabel, FormGroup } from "@mui/material";
+import { FormControl, InputLabel, Select, MenuItem, Box, SelectChangeEvent, Switch, FormControlLabel } from "@mui/material";
 import React from "react";
 import { FormattedMessage } from "react-intl";
 import { Context as IntlContext } from "../Context/IntlContext";
 import { Context as ThemeContext } from "../Context/ThemeContext";
 
 export default function Settings() {
-    const switchLocale = React.useContext(IntlContext);
-    const switchDarkMode = React.useContext(ThemeContext);
+    const intlContext = React.useContext(IntlContext);
+    const themeContext = React.useContext(ThemeContext);
     const [language, setLanguage] = React.useState("en")
 
     const onLanguageChange = (event: SelectChangeEvent) => {
-        switchLocale(event.target.value);
+        intlContext.switchLocale(event.target.value);
         setLanguage(event.target.value);
     }
 
@@ -29,7 +29,7 @@ export default function Settings() {
                     </MenuItem>
                 </Select>
             </FormControl>
-            <FormControlLabel control={<Switch onChange={switchDarkMode} />} label={<FormattedMessage id="darkMode" />} />
+            <FormControlLabel control={<Switch onChange={themeContext.switchDarkMode} />} label={<FormattedMessage id="darkMode" />} />
         </Box>
     );
 }

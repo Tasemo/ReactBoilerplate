@@ -9,7 +9,7 @@ type AuthContext = {
 
 export const Context = React.createContext({} as AuthContext);
 
-export default function AuthContext(props: React.PropsWithChildren<{}>) {
+export default function AuthContext(props: React.PropsWithChildren<unknown>) {
     const [token, setToken] = React.useState("");
     const navigate = useNavigate();
 

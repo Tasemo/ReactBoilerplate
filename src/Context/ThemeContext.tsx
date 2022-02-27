@@ -1,9 +1,13 @@
 import { createTheme, ThemeProvider } from "@mui/material";
 import React from "react";
 
-export const Context = React.createContext(() => { });
+type ThemeContext = {
+    switchDarkMode(): void
+}
 
-export default function ThemeContext(props: React.PropsWithChildren<{}>) {
+export const Context = React.createContext({} as ThemeContext);
+
+export default function ThemeContext(props: React.PropsWithChildren<unknown>) {
     const [darkMode, setDarkMode] = React.useState(false);
     const theme = createTheme({
         palette: {
@@ -16,10 +20,10 @@ export default function ThemeContext(props: React.PropsWithChildren<{}>) {
     }
 
     return (
-        <Context.Provider value={switchDarkMode}>
+        <Context.Provider value={{ switchDarkMode }} >
             <ThemeProvider theme={theme}>
                 {props.children}
             </ThemeProvider>
-        </Context.Provider >
+        </ Context.Provider >
     );
 }

@@ -3,13 +3,17 @@ import { IntlProvider } from 'react-intl';
 import de from "../../lang/de.json";
 import en from "../../lang/en.json";
 
-export const Context = React.createContext((_locale: string) => { });
-const languages: { [locale: string]: {} } = {
+type IntlContext = {
+    switchLocale(locale: string): void
+}
+
+export const Context = React.createContext({} as IntlContext);
+const languages: Record<string, Record<string, string>> = {
     "en": en,
     "de": de,
 }
 
-export default function IntlContext(props: React.PropsWithChildren<{}>) {
+export default function IntlContext(props: React.PropsWithChildren<unknown>) {
     const [locale, setLocale] = React.useState("en");
     const [messages, setMessages] = React.useState(languages[locale]);
 
@@ -19,7 +23,7 @@ export default function IntlContext(props: React.PropsWithChildren<{}>) {
     }
 
     return (
-        <Context.Provider value={switchLocale}>
+        <Context.Provider value={{ switchLocale }}>
             <IntlProvider messages={messages} locale={locale}>
                 {props.children}
             </IntlProvider>

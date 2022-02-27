@@ -1,0 +1,27 @@
+{
+    "parser": "@typescript-eslint/parser",
+    "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:react/recommended"
+    ],
+    "plugins": [
+        "@typescript-eslint",
+        "react"
+    ],
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
+    },
+    "rules": {
+        "react/react-in-jsx-scope": "off",
+        "react/boolean-prop-naming": "warn",
+        "react/button-has-type": "error",
+        "react/hook-use-state": "warn",
+        "react/no-danger": "error",
+        "react/jsx-pascal-case": "warn",
+        "react/jsx-wrap-multilines": "error",
+        "prefer-const": "error"
+    }
+}
