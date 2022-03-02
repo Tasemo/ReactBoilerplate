@@ -1,6 +1,6 @@
 import { createTheme, ThemeProvider } from "@mui/material";
 import React from "react";
-import useLocalStorage from '../Hooks/UseLocalStorage';
+import useLocalStorage from "../Hooks/UseLocalStorage";
 
 type ThemeContext = {
     switchDarkMode(): void

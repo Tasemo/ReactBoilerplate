@@ -1,5 +1,5 @@
-import { Box, Typography } from '@mui/material';
-import { FormattedMessage } from 'react-intl';
+import { Box, Typography } from "@mui/material";
+import { FormattedMessage } from "react-intl";
 
 export default function NotFound() {
     return (

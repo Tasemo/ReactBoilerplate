@@ -1,8 +1,8 @@
 import React from "react";
-import { IntlProvider } from 'react-intl';
+import { IntlProvider } from "react-intl";
 import de from "../../lang/de.json";
 import en from "../../lang/en.json";
-import useLocalStorage from '../Hooks/UseLocalStorage';
+import useLocalStorage from "../Hooks/UseLocalStorage";
 
 type IntlContext = {
     switchLocale(locale: string): void
