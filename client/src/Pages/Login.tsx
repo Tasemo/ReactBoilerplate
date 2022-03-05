@@ -7,6 +7,7 @@ export default function Login() {
     const authContext = React.useContext(Context);
 
     const handleLogin = (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
         const formData = new FormData(event.currentTarget);
         authContext.login(formData.get("email") as string, formData.get("password") as string);
     }

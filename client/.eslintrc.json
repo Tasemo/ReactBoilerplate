@@ -3,11 +3,13 @@
     "extends": [
         "eslint:recommended",
         "plugin:@typescript-eslint/recommended",
-        "plugin:react/recommended"
+        "plugin:react/recommended",
+        "plugin:react-hooks/recommended"
     ],
     "plugins": [
         "@typescript-eslint",
-        "react"
+        "react",
+        "react-hooks"
     ],
     "settings": {
         "react": {
@@ -22,6 +24,7 @@
         "react/no-danger": "error",
         "react/jsx-pascal-case": "warn",
         "react/jsx-wrap-multilines": "error",
-        "prefer-const": "error"
+        "prefer-const": "error",
+        "react-hooks/exhaustive-deps": "off"
     }
 }

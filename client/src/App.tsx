@@ -9,6 +9,7 @@ import AuthRoute from "./Context/AuthRoute";
 import Login from "./Pages/Login";
 import AuthContext from "./Context/AuthContext";
 import NotFound from "./Pages/NotFound";
+import TempRoute from "./Context/TempRoute";
 
 export default function App() {
     return (
@@ -19,15 +20,9 @@ export default function App() {
                         <CssBaseline enableColorScheme />
                         <Header />
                         <Routes>
-                            <Route path="/" element={
-                                <AuthRoute>
-                                    <Home />
-                                </AuthRoute>} />
-                            <Route path="/settings" element={
-                                <AuthRoute>
-                                    <Settings />
-                                </AuthRoute>} />
-                            <Route path="/login" element={<Login />} />
+                            <Route path="/" element={<AuthRoute path="/" element={<Home />} />} />
+                            <Route path="/settings" element={<AuthRoute path="/settings" element={<Settings />} />} />
+                            <Route path="/login" element={<TempRoute element={<Login />} />} />
                             <Route path="*" element={<NotFound />} />
                         </Routes>
                     </AuthContext>

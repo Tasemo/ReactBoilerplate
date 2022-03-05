@@ -2,15 +2,16 @@ import React from "react";
 import { Navigate } from "react-router-dom";
 import { Context } from "./AuthContext";
 
-export default function AuthRoute(props: React.PropsWithChildren<unknown>) {
+type Props = {
+    path: string;
+    element: React.ReactElement,
+}
+
+export default function AuthRoute(props: Props) {
     const authContext = React.useContext(Context);
     if (!authContext.isAuthenticated()) {
-        return <Navigate to="/login" replace />;
+        authContext.setTarget(props.path);
+        return <Navigate to={"/login"} replace />;
     }
-
-    return (
-        <>
-            {props.children}
-        </>
-    );
+    return props.element;
 }
