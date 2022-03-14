@@ -17,12 +17,11 @@ const languages: Record<string, Record<string, string>> = {
 
 export default function IntlContext(props: React.PropsWithChildren<unknown>) {
     const [locale, setLocale] = useLocalStorage("locale", "en");
-    const [messages, setMessages] = React.useState(languages[locale]);
+    const messages = React.useMemo(() => languages[locale], [locale]);
 
     const value = {
         switchLocale(locale: string) {
             setLocale(locale);
-            setMessages(languages[locale])
         },
         getLocale() {
             return locale;

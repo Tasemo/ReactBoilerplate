@@ -10,7 +10,7 @@ export default function TempRoute(props: Props) {
     const authContext = React.useContext(Context);
     if (authContext.isAuthenticated()) {
         const target = authContext.getTarget();
-        return <Navigate to={target} replace />
+        return <Navigate to={target || "/"} replace />
     }
     return props.element;
 }

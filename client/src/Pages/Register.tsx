@@ -4,31 +4,31 @@ import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router-dom";
 import { Context } from "../Context/AuthContext";
 
-export default function Login() {
+export default function Register() {
     const authContext = React.useContext(Context);
     const navigate = useNavigate();
 
-    const handleLogin = (event: FormEvent<HTMLFormElement>) => {
+    const handleRegister = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const formData = new FormData(event.currentTarget);
-        authContext.login(formData.get("email") as string, formData.get("password") as string);
+        authContext.register(formData.get("email") as string, formData.get("password") as string);
     }
 
-    const handleRegister = () => {
-        navigate("/register", { replace: true });
+    const handleLogin = () => {
+        navigate("/login", { replace: true });
     }
 
     return (
-        <Box component="form" onSubmit={handleLogin} sx={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", flexGrow: "1" }}>
+        <Box component="form" onSubmit={handleRegister} sx={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", flexGrow: "1" }}>
             <Paper elevation={5} sx={{ display: "flex", flexDirection: "column", gap: "20px", padding: "20px" }}>
                 <TextField name="email" type={"email"} required label={<FormattedMessage id="email" />} />
                 <TextField name="password" type={"password"} required label={<FormattedMessage id="password" />} />
                 <Box sx={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
                     <Button type="submit" variant="outlined">
-                        <FormattedMessage id="login" />
-                    </Button>
-                    <Button variant="outlined" onClick={handleRegister}>
                         <FormattedMessage id="register" />
+                    </Button>
+                    <Button variant="outlined" onClick={handleLogin}>
+                        <FormattedMessage id="login" />
                     </Button>
                 </Box>
             </Paper>

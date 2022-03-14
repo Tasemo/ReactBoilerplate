@@ -7,6 +7,7 @@ type AuthContext = {
     setTarget(target: string): void;
     getTarget(): string;
     login(email: string, password: string): void;
+    register(email: string, password: string): void;
     logout(): void;
 }
 
@@ -27,6 +28,22 @@ export default function AuthContext(props: React.PropsWithChildren<unknown>) {
             .then(setAuthenticated);
     }, []);
 
+    const loginOrRegister = (url: string, email: string, password: string) => {
+        fetch(url, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                email: email,
+                password: password,
+            }),
+        }).then(response => response.json())
+            .then(setToken)
+            .then(() => setAuthenticated(true))
+            .then(() => navigate("/", { replace: true }))
+    }
+
     const value = {
         isAuthenticated() {
             return authenticated;
@@ -38,21 +55,10 @@ export default function AuthContext(props: React.PropsWithChildren<unknown>) {
             return targetURL.current;
         },
         login(email: string, password: string) {
-            fetch('/rest/login', {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    email: email,
-                    password: password,
-                }),
-            }).then(response => response.json())
-                .then(token => {
-                    setAuthenticated(true)
-                    setToken(token);
-                    navigate("/", { replace: true })
-                })
+            loginOrRegister("/rest/login", email, password);
+        },
+        register(email: string, password: string) {
+            loginOrRegister("/rest/register", email, password);
         },
         logout() {
             setAuthenticated(false);

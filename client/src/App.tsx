@@ -10,6 +10,7 @@ import Login from "./Pages/Login";
 import AuthContext from "./Context/AuthContext";
 import NotFound from "./Pages/NotFound";
 import TempRoute from "./Context/TempRoute";
+import Register from "./Pages/Register";
 
 export default function App() {
     return (
@@ -23,6 +24,7 @@ export default function App() {
                             <Route path="/" element={<AuthRoute path="/" element={<Home />} />} />
                             <Route path="/settings" element={<AuthRoute path="/settings" element={<Settings />} />} />
                             <Route path="/login" element={<TempRoute element={<Login />} />} />
+                            <Route path="/register" element={<Register />} />
                             <Route path="*" element={<NotFound />} />
                         </Routes>
                     </AuthContext>
